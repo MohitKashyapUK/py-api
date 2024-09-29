@@ -1,7 +1,7 @@
-from flask import Flask, request, jsonify, Response
-from markupsafe import escape
-from urllib.parse import urlencode
-import cv2
+from flask import Flask, request, Response
+# from markupsafe import escape
+# from urllib.parse import urlencode
+# import cv2
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def isoFormatToMS(duration):
     for index, value in enumerate(parts): seconds += int(value) * obj[index]
     return seconds * 1000
 
-def get_frame(video_url, timestamp_ms):
+'''def get_frame(video_url, timestamp_ms):
     # Open the video stream
     cap = cv2.VideoCapture(video_url)
 
@@ -54,13 +54,13 @@ def get_frame(video_url, timestamp_ms):
     cap.release()
     # cv2.destroyAllWindows()
 
-    return image_data
+    return image_data'''
 
 @app.get("/")
 def index():
     return """<b>/frame</b>: Returns a frame from a video URL by given timestamp."""
 
-@app.get("/frame")
+'''@app.get("/frame")
 def frame():
     return f"<h1>/ frame / {escape('<ISO timestamp (DD:HH:MM:SS)>')} / {escape('<video URL>')}</h1>"
 
@@ -70,4 +70,4 @@ def get_frame(timestamp, url):
     if args: url += "?" + args
     timestamp = isoFormatToMS(timestamp)
     image = get_frame(url, timestamp)
-    return Response(image, mimetype='image/png')
+    return Response(image, mimetype='image/png')'''
