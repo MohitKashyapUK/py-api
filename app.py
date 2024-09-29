@@ -62,7 +62,7 @@ def index():
 
 @app.get("/frame")
 def frame():
-    return f"<h1>/ frame / {escape("<ISO timestamp (DD:HH:MM:SS)>")} / {escape("<video URL>")}</h1>"
+    return f"<h1>/ frame / {escape('<ISO timestamp (DD:HH:MM:SS)>')} / {escape('<video URL>')}</h1>"
 
 @app.get("/frame/<timestamp>/<path:url>")
 def get_frame(timestamp, url):
