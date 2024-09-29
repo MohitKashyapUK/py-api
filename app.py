@@ -1,6 +1,6 @@
 from flask import Flask, request, Response
-# from markupsafe import escape
-# from urllib.parse import urlencode
+from html import escape
+from urllib.parse import urlencode
 # import cv2
 
 app = Flask(__name__)
@@ -60,11 +60,11 @@ def isoFormatToMS(duration):
 def index():
     return """<b>/frame</b>: Returns a frame from a video URL by given timestamp."""
 
-'''@app.get("/frame")
+@app.get("/frame")
 def frame():
     return f"<h1>/ frame / {escape('<ISO timestamp (DD:HH:MM:SS)>')} / {escape('<video URL>')}</h1>"
 
-@app.get("/frame/<timestamp>/<path:url>")
+'''@app.get("/frame/<timestamp>/<path:url>")
 def get_frame(timestamp, url):
     args = urlencode(request.args)
     if args: url += "?" + args
